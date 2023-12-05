@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aravix</title>
+</head>
+<body>  
+    <p style="text-align:center; margin-top:7vmin; font-size:5vmin; font-weight:bold">Search the papers from aravix repository</p> 
+    <div class="box" style="height:30vmin;width:100vw; display:flex; justify-content:center; align-items:center;">
+       <form method="post">
+        {% csrf_token %}
+        <input type="text" name="keyword" placeholder="Enter the keyword...." style="width:80vmin;padding:1vmin">
+        <button type="submit" style="padding:1vmin; margin-left:7vmin">Submit</button>
+       </form>
+    </div>
+
+
+    {% for x in data %}
+
+    <div class="box1" style="margin-top:1vmin; border:1px solid black; width:98vw; background-color:lightgrey">
+
+   
+    <div style="padding:5vmin; color:black">
+ 
+    <h2>Title:- {{x.1}}</h2>
+    
+    <p style="margin-top:3vmin;font-size:3vmin">Abstract:- {{x.0}}</p>
+    <p style="margin-top:3vmin; font-weight:bold; font-size:3vmin">URL:- <a href={{x.2}} target="_blank">{{x.2}}</a></p>
+    </div>
+ 
+    </div>
+
+    {% endfor %}
+
+</body>
+</html>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+</style>

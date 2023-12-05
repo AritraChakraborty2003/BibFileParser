@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align:center; margin-top:5vmin">Search your query...</h1>
+    <div class="box" style="width:90vw; height:40vmin; display:flex; justify-content:center; align-items:center">
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="syear" placeholder="Enter Start year...." style="padding:1vmin; width:40vmin">
+        <input type="text" name="eyear" placeholder="Enter End year...." style="padding:1vmin; width:40vmin">
+        <input type="text" name="query1" placeholder="Enter first query...." style="padding:1vmin; width:40vmin">
+        
+        <button type="submit" style="padding:1vmin">Search</button>
+
+    </form>
+</div>
+<h1 style="margin-top:5vmin; text-align:center">The Research Papers Are </h2>
+    <p style="text-align:center; font-size:3vmin">Total items: {{length}}</p>
+{% for x in data %}
+
+<div class="box1" style="margin-top:1vmin; border:1px solid black; width:98vw; background-color:lightgrey">
+
+   
+    <div style="padding:5vmin; color:black">
+ 
+    <h2>Title:- {{x.0}}</h2>
+    <p style="margin-top:3vmin;font-weight:bold; font-size:3vmin">Year:- {{x.1}}</p>
+    <p style="margin-top:3vmin;font-size:3vmin">Abstract:- {{x.2}}</p>
+    <p style="margin-top:3vmin; font-weight:bold; font-size:3vmin">URL:- <a href={{x.3}} target="_blank">{{x.3}}</a></p>
+    </div>
+ 
+    </div>
+
+    {% endfor %}
+</body>
+</html>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+</style>
